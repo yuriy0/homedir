@@ -3,7 +3,7 @@ function git_ls_ignored () {
 }
 
 function git_ls_untracked () {
-  git status $1 | grep '^??' | awk '{print $2}'
+  git status $1 -s | grep '^??' | awk '{print $2}'
 }
 
 function git_pristine {

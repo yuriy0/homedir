@@ -44,3 +44,7 @@ function git_ref2hash () {
   git log -1 --format=format:"%H" ${1}
 }
 
+function git_ls_status () {
+  git status -s | grep "^ *$1" | cut -c 4-
+}
+

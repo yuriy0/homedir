@@ -30,6 +30,8 @@
   gc-all = !"f(){ source ~/.gitaliases; git_ls_gc_all $@; }; f"
   log-new = !"f(){ source ~/.gitaliases; git_log_new $@; }; f"
   ref2hash = !"f(){ source ~/.gitaliases; git_ref2hash $@; }; f"
+  ls-status = !"f(){ source ~/.gitaliases; git_ls_status $@; }; f"
+  add-to-commit = commit --amend --no-edit
 
 [lfs]
   skipdownloaderrors = true

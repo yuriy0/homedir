@@ -27,3 +27,20 @@ function git_log-new () {
     echo Current branch up-to-date with remote
   fi
 }
+# function git_log-new () {
+#   s0=$(git status -sb .git | grep ahead)
+#   if [ -z "$s0" ]; then
+#     echo Current branch up-to-date with remote
+#   else
+#     s1=$(echo $s0 | sed 's/## \([^ ]*\)\.\.\.\([^ ]*\).*/\1 \2/')
+#     read -ra s2 <<<"$s1"
+#     s3=$(git_ref2hash ${s2[1]}^)
+#     s4=$(git_ref2hash ${s2[0]})
+#     echo git log $s3..$s4 $@
+#   fi
+# }
+
+function git_ref2hash () {
+  git log -1 --format=format:"%H" ${1}
+}
+

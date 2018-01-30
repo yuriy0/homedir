@@ -29,6 +29,7 @@
   pristine = !"bash -c 'source ~/.gitaliases; git_pristine $@'"
   gc-all = !"bash -c 'source ~/.gitaliases; git_gc-all $@'"
   log-new = !"bash -c 'source ~/.gitaliases; git_log-new $@'"
+  ref2hash = !"bash -c 'source ~/.gitaliases; git_ref2hash $@'"
 
 [lfs]
   skipdownloaderrors = true

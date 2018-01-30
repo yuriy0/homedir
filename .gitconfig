@@ -12,10 +12,10 @@
   showbranch = true
 
 [filter "lfs"]
-  clean = git-lfs clean -- %f
-  smudge = git-lfs smudge -- %f
-  process = git-lfs filter-process
-  required = true
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
 
 ; [alias]
   ; ls-ignored = !git ls-files -v `git rev-parse --show-toplevel` | grep "^[[:lower:]]"

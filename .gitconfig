@@ -1,0 +1,50 @@
+[user]
+  email = yuriy.toporovskyy@apocalypse333.com
+  name = Yuriy Toporovskyy
+
+[winUpdater]
+  recentlySeenVersion = 2.16.1.windows.1
+
+[core]
+  editor = emacsclient -t -a=\\\"\\\"
+  autocrlf = true
+  pager = `test \"$TERM\" = \"dumb\" && echo cat || echo less`
+  showbranch = true
+
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+
+; [alias]
+  ; ls-ignored = !git ls-files -v `git rev-parse --show-toplevel` | grep "^[[:lower:]]"
+  ; ls-untracked = !echo "$@" && git status "$1" -s | grep '^??' | awk '{print $2}' && :
+  ; pristine = !git reset $1 --hard && git clean -fX && git clean -fx && git clean -fd && :
+  ; gc-all = !git -c gc.reflogExpire=0 -c gc.reflogExpireUnreachable=0 -c gc.rerereresolved=0 -c gc.rerereunresolved=0 -c gc.pruneExpire=now gc "$@"
+
+[alias]
+  ls-ignored = !"bash -c 'source ~/.gitaliases; git_ls-ignored $@'"
+  ls-untracked = !"bash -c 'source ~/.gitaliases; git_ls-untracked $@'"
+  pristine = !"bash -c 'source ~/.gitaliases; git_pristine $@'"
+  gc-all = !"bash -c 'source ~/.gitaliases; git_gc-all $@'"
+  log-new = !"bash -c 'source ~/.gitaliases; git_log-new $@'"
+
+[lfs]
+  skipdownloaderrors = true
+
+[credential]
+  helper = wincred
+
+[color]
+  ui = true
+  branch = true
+  diff = true
+  interactive = true
+  status = true
+  grep = true
+  pager = true
+  decorate = true
+  
+[push]
+  default = matching  

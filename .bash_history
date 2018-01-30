@@ -1,0 +1,3 @@
+git
+:q
+exit

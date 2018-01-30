@@ -1,16 +1,16 @@
-function git_ls-ignored () {
+function git_ls_ignored () {
   git ls-files -v $(git rev-parse --show-toplevel) | grep "^[[:lower:]]"
 }
 
-function git_ls-untracked {
-  git status ${1} -s | grep '^??' | awk '{print $2}'
+function git_ls_untracked () {
+  git status $1 | grep '^??' | awk '{print $2}'
 }
 
 function git_pristine {
   git reset $1 --hard && git clean -fX && git clean -fx && git clean -fd
 }
 
-function git_gc-all {
+function git_gc_all {
   git -c gc.reflogExpire=0 \
       -c gc.reflogExpireUnreachable=0 \
       -c gc.rerereresolved=0 \
@@ -19,7 +19,7 @@ function git_gc-all {
       gc $@
 }
 
-function git_log-new () {
+function git_log_new () {
   c=$(git status -sb .git | grep 'ahead' | sed 's/.*\[ahead \([0-9]*\)\]/\1/')
   if [[ ! $c -eq "" ]]; then
     git log -n$((c+1)) "$@"
@@ -27,7 +27,7 @@ function git_log-new () {
     echo Current branch up-to-date with remote
   fi
 }
-# function git_log-new () {
+# function git_log_new () {
 #   s0=$(git status -sb .git | grep ahead)
 #   if [ -z "$s0" ]; then
 #     echo Current branch up-to-date with remote

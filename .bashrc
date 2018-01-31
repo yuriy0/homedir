@@ -1,6 +1,30 @@
 ## General
 alias ls='ls --color=auto --human-readable'
 
+## Functions
+function unix2winPath() {
+    if hash cygpath 2>/dev/null; then
+        cygpath -w "$1" ;
+    else
+        echo "$1" | sed -e 's/^\///' -e 's/\//\\/g' ;
+    fi
+}
+
+function locate_up {
+  if (( $# < 1 )); then
+    echo Expected at least one argument
+    exit 1
+  fi
+  to_find=$1
+  stop_at=$(cygpath ${2:-/})
+  looking_in=$PWD
+
+  while [[ $looking_in != $stop_at && $looking_in != / ]] ; do
+    find "$looking_in"/ -maxdepth 1 -name "$1"
+    looking_in=$(realpath "$looking_in"/..)
+  done
+}
+
 ## For X11 over SSH
 export DISPLAY=localhost:0.0
 
@@ -24,15 +48,6 @@ alias lmbr_waf_do_build='./lmbr_waf.bat build_win_x64_vs2015_profile -p game'
 function kill_ly {
   taskkill /F /FI "WINDOWTITLE eq Lumberyard" > /dev/null
   taskkill /F /FI "IMAGENAME eq AssetProcessor.exe" > /dev/null
-}
-
-## Functions
-function unix2winPath() {
-    if hash cygpath 2>/dev/null; then
-        cygpath -w "$1" ;
-    else
-        echo "$1" | sed -e 's/^\///' -e 's/\//\\/g' ;
-    fi
 }
 
 ## Git functions

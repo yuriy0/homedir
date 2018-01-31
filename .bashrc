@@ -43,7 +43,9 @@ alias mklink='cmd /C mklink'
 export PKG_CONFIG_PATH=/usr/local/lib/opencv-3.1.0/lib/pkgconfig:$PKG_CONFIG_PATH
 
 ## Lumberyard
-alias lmbr_waf_do_build='./lmbr_waf.bat build_win_x64_vs2015_profile -p game'
+alias ly_waf='$(locate_up "lmbr_waf.bat")'
+alias ly_waf_build='$(locate_up "lmbr_waf.bat") build_win_x64_vs2015_profile -p game'
+alias ly_waf_opts='( $(locate_up "lmbr_waf.bat") show_option_dialog & ) > /dev/null 2>&1'
 
 function kill_ly {
   taskkill /F /FI "WINDOWTITLE eq Lumberyard" > /dev/null

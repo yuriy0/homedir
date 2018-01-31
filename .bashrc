@@ -21,6 +21,11 @@ export PKG_CONFIG_PATH=/usr/local/lib/opencv-3.1.0/lib/pkgconfig:$PKG_CONFIG_PAT
 ## Lumberyard
 alias lmbr_waf_do_build='./lmbr_waf.bat build_win_x64_vs2015_profile -p game'
 
+function kill_ly {
+  taskkill /F /FI "WINDOWTITLE eq Lumberyard" > /dev/null
+  taskkill /F /FI "IMAGENAME eq AssetProcessor.exe" > /dev/null
+}
+
 ## Functions
 function unix2winPath() {
     if hash cygpath 2>/dev/null; then

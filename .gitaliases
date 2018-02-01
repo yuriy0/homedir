@@ -2,8 +2,12 @@ function git_ls_ignored () {
   git ls-files -v $(git rev-parse --show-toplevel) | grep "^[[:lower:]]"
 }
 
+function git_ls_status () {
+  git status $2 -s | grep "^ *$1" | cut -c 4-
+}
+
 function git_ls_untracked () {
-  git status $1 -s | grep '^??' | awk '{print $2}'
+  git_ls_status "??" $1
 }
 
 function git_pristine {
@@ -42,9 +46,5 @@ function git_log_new () {
 
 function git_ref2hash () {
   git log -1 --format=format:"%H" ${1}
-}
-
-function git_ls_status () {
-  git status -s | grep "^ *$1" | cut -c 4-
 }
 

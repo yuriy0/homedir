@@ -32,6 +32,7 @@
   ref2hash = !"f(){ source ~/.gitaliases; git_ref2hash $@; }; f"
   ls-status = !"f(){ source ~/.gitaliases; git_ls_status $@; }; f"
   add-to-commit = commit --amend --no-edit
+  diffw = diff --color-words='[^[:space:]]|([[:alnum:]]|UTF_8_GUARD)+'
 
 [lfs]
   skipdownloaderrors = true

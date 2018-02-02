@@ -55,6 +55,7 @@ alias ly_waf_opts='( $(locate_up "lmbr_waf.bat") show_option_dialog & ) > /dev/n
 
 function kill_ly {
   taskkill /F /FI "WINDOWTITLE eq Lumberyard" > /dev/null
+  taskkill /F /FI "WINDOWTITLE eq Starting Lumberyard Editor" > /dev/null
   taskkill /F /FI "IMAGENAME eq AssetProcessor.exe" > /dev/null
 }
 

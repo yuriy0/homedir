@@ -1,6 +1,12 @@
 ## General
 alias ls='ls --color=auto --human-readable'
 
+## Git completion
+source ~/.git-completion.bash
+function __git_files {
+  _wanted files expl 'local files' _files 
+}
+
 ## Functions
 function unix2winPath() {
     if hash cygpath 2>/dev/null; then

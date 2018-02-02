@@ -1,5 +1,5 @@
 function git_ls_ignored () {
-  git ls-files -v $(git rev-parse --show-toplevel) | grep "^[[:lower:]]"
+  git status --ignored -s | grep '^!!' | cut -c 4-
 }
 
 function git_ls_status () {

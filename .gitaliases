@@ -1,15 +1,3 @@
-function git_ls_ignored () {
-  git status --ignored -s | grep '^!!' | cut -c 4-
-}
-
-function git_ls_status () {
-  git status $2 -s | grep "^ *$1" | cut -c 4-
-}
-
-function git_ls_untracked () {
-  git_ls_status "??" $1
-}
-
 function git_pristine {
   git reset $1 --hard && git clean -fX && git clean -fx && git clean -fd
 }
@@ -47,4 +35,3 @@ function git_log_new () {
 function git_ref2hash () {
   git log -1 --format=format:"%H" ${1}
 }
-

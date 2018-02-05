@@ -35,3 +35,18 @@ function git_log_new () {
 function git_ref2hash () {
   git log -1 --format=format:"%H" ${1}
 }
+
+function git_checkout_modified {
+  # git ls-files -m | xargs git checkout
+  fs=$(git ls-files -m)
+  if [[ ! -z "$fs" ]]; then
+    printf \
+      "This overwrites the following modified files. There is no way to get them back!\n\
+$fs\n\
+Are you sure? [Y/y]"
+    read -p ""
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+      echo "$fs" | xargs git checkout
+    fi
+  fi
+}

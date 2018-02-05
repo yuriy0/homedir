@@ -1,5 +1,6 @@
 ## General
 alias ls='ls --color=auto --human-readable'
+MSYS_NO_PATHCONV=1
 
 ## Git completion
 source ~/.git-completion.bash

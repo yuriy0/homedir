@@ -32,6 +32,21 @@ function locate_up {
   done
 }
 
+function cp-path {
+  src_path=$1
+  src_file=$2
+  tgt_path=$3
+  shift 3
+
+  old_file="$src_path/$src_file"
+  new_file="$tgt_path/$src_file"
+  mkdir -p $(dirname $new_file)
+  cp "$@" $old_file $new_file
+  if [ $? -eq 0 ]; then
+    echo Copied \"$old_file\" to \"$new_file\"
+  fi
+}
+
 ## For X11 over SSH
 export DISPLAY=localhost:0.0
 

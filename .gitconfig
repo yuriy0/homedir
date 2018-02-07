@@ -34,6 +34,7 @@
   add-to-commit = commit --amend --no-edit
   diffw = diff --color-words='[^[:space:]]|([[:alnum:]]|UTF_8_GUARD)+'
   checkout-modified = !"f(){ source ~/.gitaliases; git_checkout_modified $@; }; f"
+  log-st = log --name-status
 
 [lfs]
   skipdownloaderrors = true

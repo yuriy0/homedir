@@ -31,7 +31,7 @@
   log-new = !"f(){ source ~/.gitaliases; git_log_new $@; }; f"
   ref2hash = !"f(){ source ~/.gitaliases; git_ref2hash $@; }; f"
   ; ls-status = !"f(){ source ~/.gitaliases; git_ls_status $@; }; f"
-  add-to-commit = commit --amend --no-edit
+  add-to-commit = !"f(){ source ~/.gitaliases; git_add_to_commit $@; }; f"
   diffw = diff --color-words='[^[:space:]]|([[:alnum:]]|UTF_8_GUARD)+'
   checkout-modified = !"f(){ source ~/.gitaliases; git_checkout_modified $@; }; f"
   log-st = log --name-status

@@ -50,3 +50,31 @@ Are you sure? [Y/y]"
     fi
   fi
 }
+
+function git_add_to_commit {
+  if [ $# -eq 1 ]; then
+    changes=$(git ls-files -m)
+    if [[ -z "${changes// }" ]]; then
+      oldcommit=$1
+      git commit --fixup=${oldcommit}
+      editor=$(git config --get core.editor)
+      git config core.editor ":"
+      (
+        EDITOR=":"
+        GIT_EDITOR=":"
+        git rebase --interactive --autosquash ${oldcommit}^
+      )
+      git config core.editor '"$editor"'
+    else
+      printf \
+        "You have modified files:\n\
+$changes\n\
+Rebase will not work! Stash or checkout modifications then try again.\n"
+    fi
+  elif [ $# -eq 0 ]; then
+    git commit --amend --no-edit
+  else
+    echo Expected 0 or 1 arguments, got "$#":
+    echo "$@"
+  fi
+}

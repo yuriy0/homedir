@@ -1,1 +1,35 @@
 :set prompt ">"
+:set -Wall
+:set -fwarn-tabs
+:set -fno-warn-type-defaults
+:set -fno-warn-orphans
+:set -fno-warn-unused-imports
+:set -XDataKinds -XFlexibleInstances -XFlexibleContexts -XMultiParamTypeClasses 
+:set -XFunctionalDependencies -XRankNTypes  -XScopedTypeVariables  -XTypeFamilies  
+:set -XConstraintKinds -XTypeOperators -XGADTs -XScopedTypeVariables  
+:set -fno-warn-missing-signatures
+:set -fwarn-monomorphism-restriction
+:set -fdefer-type-errors 
+
+
+:set +t 
+instance {-# OVERLAPS #-} Show a where show _ = "The type is"
+
+
+
+-- import qualified Language.Haskell.HsColour as HsColour
+-- import qualified Language.Haskell.HsColour.Colourise as HsColour
+-- import qualified Language.Haskell.HsColour.Output as HsColour
+
+-- :{
+-- let myColourPrefs = HsColour.defaultColourPrefs { HsColour.conid =
+--    [HsColour.Foreground HsColour.Yellow, HsColour.Bold], HsColour.conop =
+--    [HsColour.Foreground HsColour.Yellow], HsColour.string = [HsColour.Foreground
+--    HsColour.Green], HsColour.char = [HsColour.Foreground HsColour.Cyan],
+--    HsColour.number = [HsColour.Foreground HsColour.Red, HsColour.Bold],
+--    HsColour.layout = [HsColour.Foreground HsColour.White], HsColour.keyglyph =
+--    [HsColour.Foreground HsColour.White] }
+-- :}
+-- let myPrint = putStrLn . HsColour.hscolour (HsColour.TTYg HsColour.XTerm256Compatible) myColourPrefs False False "" False . show 
+
+-- :set -interactive-print=myPrint

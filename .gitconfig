@@ -17,20 +17,13 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 
-; [alias]
-  ; ls-ignored = !git ls-files -v `git rev-parse --show-toplevel` | grep "^[[:lower:]]"
-  ; ls-untracked = !echo "$@" && git status "$1" -s | grep '^??' | awk '{print $2}' && :
-  ; pristine = !git reset $1 --hard && git clean -fX && git clean -fx && git clean -fd && :
-  ; gc-all = !git -c gc.reflogExpire=0 -c gc.reflogExpireUnreachable=0 -c gc.rerereresolved=0 -c gc.rerereunresolved=0 -c gc.pruneExpire=now gc "$@"
-
 [alias]
-  ; ls-ignored = !"f(){ source ~/.gitaliases; git_ls_ignored $@; }; f"
-  ; ls-untracked = !"f(){ source ~/.gitaliases; git_ls_untracked $@; }; f"
+  ls-ignored = !"f(){ source ~/.gitaliases; git_ls_ignored $@; }; f"
+  ls-untracked = !"f(){ source ~/.gitaliases; git_ls_untracked $@; }; f"
   pristine = !"f(){ source ~/.gitaliases; git_pristine $@; }; f"
   gc-all = !"f(){ source ~/.gitaliases; git_gc_all $@; }; f"
   log-new = !"f(){ source ~/.gitaliases; git_log_new $@; }; f"
   ref2hash = !"f(){ source ~/.gitaliases; git_ref2hash $@; }; f"
-  ; ls-status = !"f(){ source ~/.gitaliases; git_ls_status $@; }; f"
   add-to-commit = !"f(){ source ~/.gitaliases; git_add_to_commit $@; }; f"
   diffw = diff --color-words='[^[:space:]]|([[:alnum:]]|UTF_8_GUARD)+'
   checkout-modified = !"f(){ source ~/.gitaliases; git_checkout_modified $@; }; f"

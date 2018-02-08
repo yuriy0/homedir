@@ -3,6 +3,7 @@
 .inputrc eol=lf
 .gitaliases eol=lf
 .gitconfig eol=lf
+.git-completion.bash eol=lf
 
 *.exe filter=lfs diff=lfs merge=lfs -text
 *.EXE filter=lfs diff=lfs merge=lfs -text

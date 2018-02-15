@@ -47,6 +47,10 @@ Are you sure? [Y/y]"
   fi
 }
 
+function git_add_modified {
+  git ls-files -m | xargs git add
+}
+
 function git_add_to_commit {
   if [ $# -eq 1 ]; then
     changes=$(git ls-files -m)

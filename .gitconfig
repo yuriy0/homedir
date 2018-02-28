@@ -29,6 +29,9 @@
   checkout-modified = !"f(){ source ~/.gitaliases; git_checkout_modified $@; }; f"
   add-modified = !"f(){ source ~/.gitaliases; git_add_modified $@; }; f"
   log-st = log --name-status
+  lock = lfs lock
+  unlock = lfs unlock
+  ls-locks = lfs locks
 
 [lfs]
   skipdownloaderrors = true

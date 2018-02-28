@@ -1,5 +1,7 @@
 ## General
 alias ls='ls --color=auto --human-readable'
+alias git-unite='~/git-unite/src/Git.Unite/bin/Release/Git.Unite.exe'
+
 MSYS_NO_PATHCONV=1
 
 ## Git completion

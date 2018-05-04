@@ -53,24 +53,25 @@ function git_add_modified {
 
 function git_add_to_commit {
   if [ $# -eq 1 ]; then
+    oldcommit=$1
     changes=$(git ls-files -m)
-    if [[ -z "${changes// }" ]]; then
-      oldcommit=$1
-      git commit --fixup=${oldcommit}
-      editor=$(git config --get core.editor)
-      git config core.editor ":"
-      (
-        EDITOR=":"
-        GIT_EDITOR=":"
-        git rebase --interactive --autosquash ${oldcommit}^
-      )
-      git config core.editor '"$editor"'
-    else
-      printf \
-        "You have modified files:\n\
-$changes\n\
-Rebase will not work! Stash or checkout modifications then try again.\n"
+    changes="${changes// }"
+    if ! [[ -z ${changes} ]]; then
+      git stash push --keep-index -m "tmp - rebase current work onto $oldcommit"
     fi
+
+    git commit --fixup=${oldcommit}
+    editor=$(git config --get core.editor)
+    git config core.editor ":"
+    (
+      EDITOR=":"
+      GIT_EDITOR=":"
+      git rebase --interactive --autosquash ${oldcommit}^
+    )
+    if ! [[ -z ${changes} ]]; then
+      git stash pop
+    fi
+    git config core.editor "${editor// /\\ }"
   elif [ $# -eq 0 ]; then
     git commit --amend --no-edit
   else

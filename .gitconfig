@@ -6,7 +6,7 @@
   recentlySeenVersion = 2.16.1.windows.1
 
 [core]
-  editor = emacsclient -t -a=\\\"\\\"
+	editor = emacsclient -t -a=\"\"
   autocrlf = true
   pager = `test \"$TERM\" = \"dumb\" && echo cat || echo less`
   showbranch = true
@@ -28,6 +28,7 @@
   diffw = diff --color-words='[^[:space:]]|([[:alnum:]]|UTF_8_GUARD)+'
   checkout-modified = !"f(){ source ~/.gitaliases; git_checkout_modified $@; }; f"
   add-modified = !"f(){ source ~/.gitaliases; git_add_modified $@; }; f"
+  pull-ff = !"f() { source ~/.gitaliases; git_pull_ff $@; }; f"
   log-st = log --name-status
   lock = lfs lock
   unlock = lfs unlock
@@ -54,3 +55,6 @@
 
 [pull]
   rebase = true
+
+[status]
+	submoduleSummary = true

@@ -78,3 +78,9 @@ Rebase will not work! Stash or checkout modifications then try again.\n"
     echo "$@"
   fi
 }
+
+function git_pull_ff {
+  git stash push
+  git pull --ff-only
+  git stash pop
+}

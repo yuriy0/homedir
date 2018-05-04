@@ -42,7 +42,7 @@ $fs\n\
 Are you sure? [Y/y]"
     read -p ""
     if [[ $REPLY =~ ^[Yy]$ ]]; then
-      echo "$fs" | xargs git checkout
+      git ls-files -m -z | xargs -0 git checkout
     fi
   fi
 }

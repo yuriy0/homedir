@@ -7,7 +7,7 @@ MSYS_NO_PATHCONV=1
 ## Git completion
 source ~/.git-completion.bash
 function __git_files {
-  _wanted files expl 'local files' _files 
+  _wanted files expl 'local files' _files
 }
 
 ## Functions
@@ -70,6 +70,10 @@ export PKG_CONFIG_PATH=/usr/local/lib/opencv-3.1.0/lib/pkgconfig:$PKG_CONFIG_PAT
 alias ly_waf='$(locate_up "lmbr_waf.bat")'
 alias ly_waf_build='$(locate_up "lmbr_waf.bat") build_win_x64_vs2015_profile -p game'
 alias ly_waf_opts='( $(locate_up "lmbr_waf.bat") show_option_dialog & ) > /dev/null 2>&1'
+function ly_populate_ad {
+  dir=$(dirname $(locate_up "SetupAssistant.bat"))
+  "$dir"/dev/Tools/LmbrSetup/Win/lmbr.exe projects populate-appdescriptors -projects "$1"
+}
 
 function kill_ly {
   taskkill /F /FI "WINDOWTITLE eq Lumberyard" > /dev/null

@@ -71,7 +71,7 @@ function git_add_to_commit {
     if ! [[ -z ${changes} ]]; then
       git stash pop
     fi
-    git config core.editor "${editor// /\\ }"
+    git config core.editor "${editor// /\ }"
   elif [ $# -eq 0 ]; then
     git commit --amend --no-edit
   else

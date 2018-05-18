@@ -69,6 +69,7 @@ export PKG_CONFIG_PATH=/usr/local/lib/opencv-3.1.0/lib/pkgconfig:$PKG_CONFIG_PAT
 ## Lumberyard
 alias ly_waf='$(locate_up "lmbr_waf.bat")'
 alias ly_waf_build='$(locate_up "lmbr_waf.bat") build_win_x64_vs2015_profile -p game'
+alias ly_waf_clean='$(locate_up "lmbr_waf.bat") clean_win_x64_vs2015_profile -p game'
 alias ly_waf_opts='( $(locate_up "lmbr_waf.bat") show_option_dialog & ) > /dev/null 2>&1'
 function ly_populate_ad {
   dir=$(dirname $(locate_up "SetupAssistant.bat"))

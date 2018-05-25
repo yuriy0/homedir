@@ -29,6 +29,7 @@
   checkout-modified = !"f(){ source ~/.gitaliases; git_checkout_modified $@; }; f"
   add-modified = !"f(){ source ~/.gitaliases; git_add_modified $@; }; f"
   pull-ff = !"f() { source ~/.gitaliases; git_pull_ff $@; }; f"
+  status-nosm = !"f() { source ~/.gitaliases; git_status_nosm $@; }; f"
   log-st = log --name-status
   lock = lfs lock
   unlock = lfs unlock
@@ -49,9 +50,9 @@
   grep = true
   pager = true
   decorate = true
-  
+
 [push]
-  default = matching  
+  default = matching
 
 [pull]
   rebase = true

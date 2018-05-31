@@ -79,7 +79,9 @@ function ly_populate_ad {
 function kill_ly {
   taskkill /F /FI "WINDOWTITLE eq Lumberyard" > /dev/null
   taskkill /F /FI "WINDOWTITLE eq Starting Lumberyard Editor" > /dev/null
+  taskkill /F /FI "WINDOWTITLE eq Editor.exe" > /dev/null
   taskkill /F /FI "IMAGENAME eq AssetProcessor.exe" > /dev/null
+  taskkill /F /FI "IMAGENAME eq GridHub_copyapp_.exe" > /dev/null
 }
 
 ## Git functions

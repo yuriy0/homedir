@@ -1,9 +1,9 @@
 function git_ls_ignored () {
-  git status --ignored -s | grep '^!!' | cut -c 4-
+  (cd "$GIT_PREFIX" ; git status --ignored -s | grep '^!!' | cut -c 4-)
 }
 
 function git_ls_untracked () {
-  git status "${1:-.}" -s | grep "^ *??" | cut -c 4-
+  (cd "$GIT_PREFIX" ; git status "${1:-.}" -s | grep "^ *??" | cut -c 4-)
 }
 
 function git_pristine {
@@ -34,7 +34,7 @@ function git_ref2hash () {
 
 function git_checkout_modified {
   # git ls-files -m | xargs git checkout
-  fs=$(git ls-files -m)
+  fs=$(cd "$GIT_PREFIX" ; git ls-files -m)
   if [[ ! -z "$fs" ]]; then
     printf \
       "This overwrites the following modified files. There is no way to get them back!\n\
@@ -87,6 +87,6 @@ function git_pull_ff {
 }
 
 function git_status_nosm {
-  git status --ignore-submodules=all "$@"
+  (cd "$GIT_PREFIX" ; git status --ignore-submodules=all "$@")
 }
 

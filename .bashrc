@@ -53,6 +53,17 @@ function cp-path {
   fi
 }
 
+function until-success {
+  command="$@"
+  count=0
+  until eval $command; do
+    echo \'$command\': run \#$count
+    count=$((count+1))
+  done;
+  echo ==============================================
+  echo \'$command\' ran \#$count times before succeeding
+}
+
 ## For X11 over SSH
 export DISPLAY=localhost:0.0
 

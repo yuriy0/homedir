@@ -81,9 +81,9 @@ function git_add_to_commit {
 }
 
 function git_pull_ff {
-  git stash push
+  mod_status=`git stash push`
   git pull --ff-only
-  git stash pop
+  if [ "$mod_status" != "No local changes to save" ]; then git stash pop; fi;
 }
 
 function git_status_nosm {

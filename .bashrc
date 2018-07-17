@@ -4,6 +4,10 @@ alias git-unite='~/git-unite/src/Git.Unite/bin/Release/Git.Unite.exe'
 
 MSYS_NO_PATHCONV=1
 
+HISTCONTROL=ignoredups # Avoid duplicates
+shopt -s histappend # When the shell exits, append to the history file instead of overwriting it
+# PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r" # After each command, append to the history file and reread it
+
 ## Git completion
 source ~/.git-completion.bash
 function __git_files {

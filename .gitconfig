@@ -6,7 +6,7 @@
   recentlySeenVersion = 2.16.1.windows.1
 
 [core]
-	editor = emacsclient -t -a=\"\"
+	editor = emacsclient -t -a=\\\"\\\"
   autocrlf = true
   pager = `test \"$TERM\" = \"dumb\" && echo cat || echo less`
   showbranch = true

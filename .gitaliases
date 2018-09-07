@@ -34,7 +34,11 @@ function git_ref2hash () {
 
 function git_checkout_modified {
   # git ls-files -m | xargs git checkout
-  fs=$(cd "$GIT_PREFIX" ; git ls-files -m)
+  (cd "$GIT_PREFIX" ; git_checkout_modified_currentdir "$@")
+}
+
+function git_checkout_modified_currentdir {
+  fs=$(git ls-files -m $1)
   if [[ ! -z "$fs" ]]; then
     printf \
       "This overwrites the following modified files. There is no way to get them back!\n\

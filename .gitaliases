@@ -48,7 +48,7 @@ Are you sure? [Y/y]"
 }
 
 function git_add_modified {
-  git ls-files -m | xargs git add
+  git ls-files -m -z "${1:-.}" | xargs -0 git add
 }
 
 function git_add_to_commit {

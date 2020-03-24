@@ -52,6 +52,10 @@ Are you sure? [Y/y]"
 }
 
 function git_add_modified {
+  (cd "$GIT_PREFIX" ; git_add_modified_current_dir "$@")
+}
+
+function git_add_modified_current_dir {
   git ls-files -m -z "${1:-.}" | xargs -0 git add
 }
 

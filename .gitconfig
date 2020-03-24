@@ -59,6 +59,6 @@
   rebase = true
 
 [status]
-	submoduleSummary = true
+	submoduleSummary = false
 [merge]
 	renamelimit = 10000

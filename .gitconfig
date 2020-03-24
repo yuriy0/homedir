@@ -37,6 +37,7 @@
 
 [lfs]
   skipdownloaderrors = true
+	setlockablereadonly = false
 
 [credential]
   helper = wincred

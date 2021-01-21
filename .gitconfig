@@ -62,3 +62,7 @@
 	submoduleSummary = false
 [merge]
 	renamelimit = 10000
+	
+[alias]
+	p4 = !py 'C:\\Program Files\\Git\\cmd\\git-p4.py'
+
